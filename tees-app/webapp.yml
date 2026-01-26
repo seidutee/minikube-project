@@ -18,5 +18,5 @@ spec:
       - name: webapp
         image: seidut/effulgencetech-nodejs-img:8
         ports:
-        - containerPort: 80
+        - containerPort: 8080
         
