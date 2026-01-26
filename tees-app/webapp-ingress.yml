@@ -13,6 +13,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: webapp-service
+                name: tees-webapp-service
                 port:
                   number: 80
