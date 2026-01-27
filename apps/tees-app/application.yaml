@@ -1,20 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: teesapp-argo-application
+  name: teesapp
   namespace: argocd
 spec:
   project: default
-
   source:
     repoURL: https://github.com/seidutee/minikube-project.git
     targetRevision: main
-    path: tees-app
-
+    path: apps/teesapp
   destination:
     server: https://kubernetes.default.svc
     namespace: teesapp
-
   syncPolicy:
     automated:
       prune: true
