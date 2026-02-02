@@ -12,6 +12,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: webapp-service
+                name: nanas-webapp-service
                 port:
                   number: 3000
