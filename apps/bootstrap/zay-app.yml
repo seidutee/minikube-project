@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: zay-app
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/seidutee/minikube-project.git
+    targetRevision: main
+    path: apps/zay
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: zayapp
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
