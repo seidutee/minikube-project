@@ -3,8 +3,8 @@ docker build -t seidut/ayd:1.0 ./ayd
 docker push seidut/ayd:1.0
 
 # Kid 2
-docker build -t seidut/zay:1.0 ./zay
-docker push seidut/zay:1.0
+docker build -t seidut/zay:1.1 ./zay
+docker push seidut/zay:1.1
 
 
 # Pre load the images to the cluster
