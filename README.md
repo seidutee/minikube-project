@@ -28,7 +28,7 @@ docker pull seidut/ayd:1.0
 
 
 # Install Prometheus and Grafana
-
+kubectl apply
 
 
 
