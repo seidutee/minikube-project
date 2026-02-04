@@ -27,6 +27,7 @@ docker pull seidut/zay:1.0
 docker pull seidut/ayd:1.0 
 
 
+# Install Prometheus and Grafana
 
 
 
