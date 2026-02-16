@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: fashion-store
-        image: seidut/zay:1.3 
+        image: seidut/warehouse:1.1
         ports:
         - containerPort: 80 # The container listens on port 80
 

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Fashion Store</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f5f5f5;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #111;
+      color: #fff;
+      padding: 1.5rem;
+      text-align: center;
+    }
+    main {
+      padding: 2rem;
+      text-align: center;
+    }
+    img.hero {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+    footer {
+      background: #111;
+      color: #fff;
+      padding: 1rem;
+      text-align: center;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Fashion Store</h1>
+    <p>Simple static website hosted with NGINX</p>
+  </header>
+
+  <main>
+    <h2>Welcome 👋</h2>
+
+    <!-- Fashion image -->
+    <img src="fashion.jpeg" alt="Fashion Collection" class="hero" />
+
+    <p>Your fashion store is live!</p>
+    <p>Built with Docker • Served by NGINX • Deployed on Kubernetes</p>
+  </main>
+
+  <footer>
+    © 2026 Fashion Store
+  </footer>
+</body>
+</html>
