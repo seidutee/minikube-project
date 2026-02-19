@@ -1,0 +1,20 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: fashion-store-ingress
+  namespace: fashionapp
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: fashion-store.apps.local
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: fashion-store-service 
+                port:
+                  number: 80
+ 
+ 
