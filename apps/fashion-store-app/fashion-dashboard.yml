@@ -1,0 +1,63 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: fashion-store-dashboard
+  namespace: monitoring
+  labels:
+    grafana_dashboard: "1"
+data:
+  fashion-store-dashboard.json: |
+    {
+      "uid": "fashion-store",
+      "title": "Fashion Store App Monitoring",
+      "timezone": "browser",
+      "schemaVersion": 37,
+      "version": 1,
+      "refresh": "10s",
+      "panels": [
+        {
+          "type": "stat",
+          "title": "Running Pods",
+          "gridPos": { "x": 0, "y": 0, "w": 6, "h": 4 },
+          "targets": [
+            {
+              "expr": "count(kube_pod_status_phase{namespace=\"fashionapp\", phase=\"Running\", pod=~\"fashion-store.*\"})",
+              "refId": "A"
+            }
+          ]
+        },
+        {
+          "type": "timeseries",
+          "title": "CPU Usage (cores)",
+          "gridPos": { "x": 6, "y": 0, "w": 18, "h": 8 },
+          "targets": [
+            {
+              "expr": "sum(rate(container_cpu_usage_seconds_total{namespace=\"fashionapp\", pod=~\"fashion-store.*\", image!=\"\"}[5m]))",
+              "refId": "A"
+            }
+          ]
+        },
+        {
+          "type": "timeseries",
+          "title": "Memory Usage (MB)",
+          "gridPos": { "x": 0, "y": 8, "w": 12, "h": 8 },
+          "targets": [
+            {
+              "expr": "sum(container_memory_usage_bytes{namespace=\"fashionapp\", pod=~\"fashion-store.*\", image!=\"\"}) / 1024 / 1024",
+              "refId": "A"
+            }
+          ]
+        },
+        {
+          "type": "timeseries",
+          "title": "Pod Restarts",
+          "gridPos": { "x": 12, "y": 8, "w": 12, "h": 8 },
+          "targets": [
+            {
+              "expr": "sum(kube_pod_container_status_restarts_total{namespace=\"fashionapp\", pod=~\"fashion-store.*\"})",
+              "refId": "A"
+            }
+          ]
+        }
+      ]
+    }
