@@ -101,6 +101,45 @@ kubectl port-forward -n monitoring svc/monitoring-kube-prometheus-alertmanager 9
 
 
 
-
-
+# Installation of Prometheus and Grafana
+# Use helm, its recommended
+1. helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+2. helm repo update
+# Create a namespace monitoring
+3. kubectl create namespace monitoring
+4. helm install monitoring prometheus-community/kube-prometheus-stack --namespace monitoring
+# Check status
+5. kubectl get pod -n monitoring
+ 
+# Grafana UI
+kubectl port-forward -n monitoring svc/monitoring-grafana 3000:80
+http://localhost:3000
+ 
+# Grafana Password
+kubectl get secret --namespace monitoring -l app.kubernetes.io/component=admin-secret -o jsonpath="{.items[0].data.admin-password}" | base64 --decode ; echo
+ 
+kubectl get secret -n monitoring monitoring-grafana -o jsonpath="{.data.admin-password}" | base64 --decode
+ 
+# Add prometheus as a datasource
+url required - http://monitoring-kube-prometheus-prometheus.monitoring.svc:9090
+ 
+ 
+# Prometheus
+kubectl port-forward -n monitoring svc/monitoring-kube-prometheus-prometheus 9090:9090
+http://localhost:9090
+ 
+How to Verify the Service Name (Optional)
+kubectl get svc -n monitoring
+ 
+ 
+ 
+3. Verify Alertmanager (for TestAlert)
+kubectl port-forward -n monitoring svc/monitoring-kube-prometheus-alertmanager 9093:9093
+# Access locally via http://localhost:9093
+ 
+ 
+ 
+Prometheus Community Kubernetes Helm Charts
+Prometheus community Helm charts
+ 
 
